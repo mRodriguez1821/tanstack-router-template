@@ -1,3 +1,21 @@
+## Technologies
+
+- React (Vite)
+- Tanstack Router
+- Zod
+- Zustand
+- Tanstack Query
+- Tailwind CSS
+- Shadcn
+- React-hook-form
+- Storybook
+- msw
+- axios
+- @hookform/resolvers
+- i18n
+- standard-version
+- pnpm
+
 ## Folder Structure
 
 ```bash

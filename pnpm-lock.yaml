@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5.4.3
-        version: 5.4.3(@standard-schema/spec@1.1.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.4.3)
+        version: 5.4.3(@standard-schema/spec@1.1.0)(react-hook-form@7.83.0(react@19.2.8))(valibot@1.4.2(typescript@6.0.3))(zod@4.4.3)
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0))
@@ -32,9 +32,6 @@ importers:
       msw:
         specifier: ^2.15.0
         version: 2.15.0(@types/node@24.13.3)(typescript@6.0.3)
-      pnpm:
-        specifier: ^11.17.0
-        version: 11.17.0
       react:
         specifier: ^19.2.7
         version: 19.2.8
@@ -111,6 +108,9 @@ importers:
       typescript:
         specifier: ~6.0.2
         version: 6.0.3
+      valibot:
+        specifier: ^1.0.0
+        version: 1.4.2(typescript@6.0.3)
       vite:
         specifier: ^8.1.1
         version: 8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)
@@ -2650,11 +2650,6 @@ packages:
     resolution: {integrity: sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==}
     engines: {node: '>=14.19.0'}
 
-  pnpm@11.17.0:
-    resolution: {integrity: sha512-zKPOozKtJUu4QUX5ZtGfSHlhUhA0b8kseaBH8joNezzKPDeS8AdrofGDHSd++88KkRmzGppg7Kf7PWIx8zHvcg==}
-    engines: {node: '>=22.13'}
-    hasBin: true
-
   postcss@8.5.23:
     resolution: {integrity: sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3107,6 +3102,14 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  valibot@1.4.2:
+    resolution: {integrity: sha512-gjdCvJ6d3RyHAneqxMYMW9QMCwYMb3jpOO0IyHZV1bnRHFBHrX3VkIILt5XYR0WhwHiH7Mty8ovuPZ/O3gamrg==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
@@ -3523,12 +3526,13 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@hookform/resolvers@5.4.3(@standard-schema/spec@1.1.0)(react-hook-form@7.83.0(react@19.2.8))(zod@4.4.3)':
+  '@hookform/resolvers@5.4.3(@standard-schema/spec@1.1.0)(react-hook-form@7.83.0(react@19.2.8))(valibot@1.4.2(typescript@6.0.3))(zod@4.4.3)':
     dependencies:
       '@standard-schema/utils': 0.3.0
       react-hook-form: 7.83.0(react@19.2.8)
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
+      valibot: 1.4.2(typescript@6.0.3)
       zod: 4.4.3
 
   '@hutson/parse-repository-url@3.0.2': {}
@@ -5505,8 +5509,6 @@ snapshots:
 
   pngjs@7.0.0: {}
 
-  pnpm@11.17.0: {}
-
   postcss@8.5.23:
     dependencies:
       nanoid: 3.3.16
@@ -5922,6 +5924,10 @@ snapshots:
       react: 19.2.8
 
   util-deprecate@1.0.2: {}
+
+  valibot@1.4.2(typescript@6.0.3):
+    optionalDependencies:
+      typescript: 6.0.3
 
   validate-npm-package-license@3.0.4:
     dependencies:

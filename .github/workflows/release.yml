@@ -21,14 +21,20 @@ jobs:
         with:
           fetch-depth: 0 # standard-version needs full git history to determine version/changelog
 
+      # Install pnpm CLI before setting up Node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # Adjust to match your local pnpm version if needed
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.13.0
-          cache: "npm"
+          cache: "pnpm" # Now correctly targets pnpm-lock.yaml
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Configure Git User
         run: |
@@ -36,7 +42,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Run standard-version
-        run: npm run release # Or 'npx standard-version' directly
+        run: pnpm run release # Or 'pnpm dlx standard-version' directly
 
       - name: Push changes and tags
         run: git push --follow-tags origin main

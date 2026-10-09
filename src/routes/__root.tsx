@@ -1,30 +1,25 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import type { AuthContextValue } from "@/common/context/authContextStore";
+import { ToastHost } from "@/common/components/ToastHost";
+import { ModalHost } from "@/common/hooks/useModal";
+import { showDebugger } from "@/common/lib/env";
 
-const RootLayout = () => (
-  <>
-    <div className="p-2 flex gap-2">
-      <Link to="." className="[&.active]:font-bold">
-        Home
-      </Link>{" "}
-      <Link to="/about" className="[&.active]:font-bold">
-        About
-      </Link>
-      <Link to="/users" className="[&.active]:font-bold">
-        Users
-      </Link>
-      <Link
-        to={"/users/$userId"}
-        params={{ userId: "1234" }}
-        className="[&.active]:font-bold"
-      >
-        Users by id
-      </Link>
-    </div>
-    <hr />
-    <Outlet />
-    <TanStackRouterDevtools />
-  </>
-);
+export interface RouterContext {
+  auth: AuthContextValue;
+}
 
-export const Route = createRootRoute({ component: RootLayout });
+const RootLayout = () => {
+  return (
+    <>
+      <ToastHost />
+      <ModalHost />
+      <Outlet />
+      {showDebugger && <TanStackRouterDevtools />}
+    </>
+  );
+};
+
+export const Route = createRootRouteWithContext<RouterContext>()({
+  component: RootLayout,
+});

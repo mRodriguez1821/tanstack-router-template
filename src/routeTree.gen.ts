@@ -9,128 +9,337 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as appauthSigninRouteImport } from './routes/(app)/(auth)/signin'
-import { Route as appusersUsersIndexRouteImport } from './routes/(app)/(users)/users.index'
-import { Route as appusersUsersUserIdRouteImport } from './routes/(app)/(users)/users.$userId'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as PublicRouteImport } from './routes/_public'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users.index'
+import { Route as AuthenticatedUsersUserIdRouteImport } from './routes/_authenticated/users.$userId'
+import { Route as PublicdemoAboutRouteImport } from './routes/_public/(demo)/about'
+import { Route as PublicdemoDemoIndexRouteImport } from './routes/_public/(demo)/demo.index'
+import { Route as PublicdemoDemoFormRouteImport } from './routes/_public/(demo)/demo.form'
+import { Route as PublicdemoDemoModalRouteImport } from './routes/_public/(demo)/demo.modal'
+import { Route as PublicdemoDemoStorageRouteImport } from './routes/_public/(demo)/demo.storage'
+import { Route as PublicdemoDemoThemesRouteImport } from './routes/_public/(demo)/demo.themes'
+import { Route as PublicdemoDemoToastsRouteImport } from './routes/_public/(demo)/demo.toasts'
 
-const IndexRoute = IndexRouteImport.update({
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const appauthSigninRoute = appauthSigninRouteImport.update({
-  id: '/(app)/(auth)/signin',
-  path: '/signin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const appusersUsersIndexRoute = appusersUsersIndexRouteImport.update({
-  id: '/(app)/(users)/users/',
+const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
+  id: '/users/',
   path: '/users/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const appusersUsersUserIdRoute = appusersUsersUserIdRouteImport.update({
-  id: '/(app)/(users)/users/$userId',
-  path: '/users/$userId',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedUsersUserIdRoute =
+  AuthenticatedUsersUserIdRouteImport.update({
+    id: '/users/$userId',
+    path: '/users/$userId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const PublicdemoAboutRoute = PublicdemoAboutRouteImport.update({
+  id: '/(demo)/about',
+  path: '/about',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoIndexRoute = PublicdemoDemoIndexRouteImport.update({
+  id: '/(demo)/demo/',
+  path: '/demo/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoFormRoute = PublicdemoDemoFormRouteImport.update({
+  id: '/(demo)/demo/form',
+  path: '/demo/form',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoModalRoute = PublicdemoDemoModalRouteImport.update({
+  id: '/(demo)/demo/modal',
+  path: '/demo/modal',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoStorageRoute = PublicdemoDemoStorageRouteImport.update({
+  id: '/(demo)/demo/storage',
+  path: '/demo/storage',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoThemesRoute = PublicdemoDemoThemesRouteImport.update({
+  id: '/(demo)/demo/themes',
+  path: '/demo/themes',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicdemoDemoToastsRoute = PublicdemoDemoToastsRouteImport.update({
+  id: '/(demo)/demo/toasts',
+  path: '/demo/toasts',
+  getParentRoute: () => PublicRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/signin': typeof appauthSigninRoute
-  '/users/$userId': typeof appusersUsersUserIdRoute
-  '/users/': typeof appusersUsersIndexRoute
+  '/': typeof PublicIndexRoute
+  '/login': typeof LoginRoute
+  '/home': typeof AuthenticatedHomeRoute
+  '/users/$userId': typeof AuthenticatedUsersUserIdRoute
+  '/about': typeof PublicdemoAboutRoute
+  '/users/': typeof AuthenticatedUsersIndexRoute
+  '/demo/form': typeof PublicdemoDemoFormRoute
+  '/demo/modal': typeof PublicdemoDemoModalRoute
+  '/demo/storage': typeof PublicdemoDemoStorageRoute
+  '/demo/themes': typeof PublicdemoDemoThemesRoute
+  '/demo/toasts': typeof PublicdemoDemoToastsRoute
+  '/demo/': typeof PublicdemoDemoIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/signin': typeof appauthSigninRoute
-  '/users/$userId': typeof appusersUsersUserIdRoute
-  '/users': typeof appusersUsersIndexRoute
+  '/': typeof PublicIndexRoute
+  '/login': typeof LoginRoute
+  '/home': typeof AuthenticatedHomeRoute
+  '/users/$userId': typeof AuthenticatedUsersUserIdRoute
+  '/about': typeof PublicdemoAboutRoute
+  '/users': typeof AuthenticatedUsersIndexRoute
+  '/demo/form': typeof PublicdemoDemoFormRoute
+  '/demo/modal': typeof PublicdemoDemoModalRoute
+  '/demo/storage': typeof PublicdemoDemoStorageRoute
+  '/demo/themes': typeof PublicdemoDemoThemesRoute
+  '/demo/toasts': typeof PublicdemoDemoToastsRoute
+  '/demo': typeof PublicdemoDemoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/(app)/(auth)/signin': typeof appauthSigninRoute
-  '/(app)/(users)/users/$userId': typeof appusersUsersUserIdRoute
-  '/(app)/(users)/users/': typeof appusersUsersIndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/login': typeof LoginRoute
+  '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_public/': typeof PublicIndexRoute
+  '/_authenticated/users/$userId': typeof AuthenticatedUsersUserIdRoute
+  '/_public/(demo)/about': typeof PublicdemoAboutRoute
+  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_public/(demo)/demo/form': typeof PublicdemoDemoFormRoute
+  '/_public/(demo)/demo/modal': typeof PublicdemoDemoModalRoute
+  '/_public/(demo)/demo/storage': typeof PublicdemoDemoStorageRoute
+  '/_public/(demo)/demo/themes': typeof PublicdemoDemoThemesRoute
+  '/_public/(demo)/demo/toasts': typeof PublicdemoDemoToastsRoute
+  '/_public/(demo)/demo/': typeof PublicdemoDemoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/signin' | '/users/$userId' | '/users/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/home'
+    | '/users/$userId'
+    | '/about'
+    | '/users/'
+    | '/demo/form'
+    | '/demo/modal'
+    | '/demo/storage'
+    | '/demo/themes'
+    | '/demo/toasts'
+    | '/demo/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/signin' | '/users/$userId' | '/users'
+  to:
+    | '/'
+    | '/login'
+    | '/home'
+    | '/users/$userId'
+    | '/about'
+    | '/users'
+    | '/demo/form'
+    | '/demo/modal'
+    | '/demo/storage'
+    | '/demo/themes'
+    | '/demo/toasts'
+    | '/demo'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/(app)/(auth)/signin'
-    | '/(app)/(users)/users/$userId'
-    | '/(app)/(users)/users/'
+    | '/_authenticated'
+    | '/_public'
+    | '/login'
+    | '/_authenticated/home'
+    | '/_public/'
+    | '/_authenticated/users/$userId'
+    | '/_public/(demo)/about'
+    | '/_authenticated/users/'
+    | '/_public/(demo)/demo/form'
+    | '/_public/(demo)/demo/modal'
+    | '/_public/(demo)/demo/storage'
+    | '/_public/(demo)/demo/themes'
+    | '/_public/(demo)/demo/toasts'
+    | '/_public/(demo)/demo/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  appauthSigninRoute: typeof appauthSigninRoute
-  appusersUsersUserIdRoute: typeof appusersUsersUserIdRoute
-  appusersUsersIndexRoute: typeof appusersUsersIndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  PublicRoute: typeof PublicRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/home': {
+      id: '/_authenticated/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof AuthenticatedHomeRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(app)/(auth)/signin': {
-      id: '/(app)/(auth)/signin'
-      path: '/signin'
-      fullPath: '/signin'
-      preLoaderRoute: typeof appauthSigninRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(app)/(users)/users/': {
-      id: '/(app)/(users)/users/'
+    '/_authenticated/users/': {
+      id: '/_authenticated/users/'
       path: '/users'
       fullPath: '/users/'
-      preLoaderRoute: typeof appusersUsersIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/(app)/(users)/users/$userId': {
-      id: '/(app)/(users)/users/$userId'
+    '/_authenticated/users/$userId': {
+      id: '/_authenticated/users/$userId'
       path: '/users/$userId'
       fullPath: '/users/$userId'
-      preLoaderRoute: typeof appusersUsersUserIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedUsersUserIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_public/(demo)/about': {
+      id: '/_public/(demo)/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PublicdemoAboutRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/': {
+      id: '/_public/(demo)/demo/'
+      path: '/demo'
+      fullPath: '/demo/'
+      preLoaderRoute: typeof PublicdemoDemoIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/form': {
+      id: '/_public/(demo)/demo/form'
+      path: '/demo/form'
+      fullPath: '/demo/form'
+      preLoaderRoute: typeof PublicdemoDemoFormRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/modal': {
+      id: '/_public/(demo)/demo/modal'
+      path: '/demo/modal'
+      fullPath: '/demo/modal'
+      preLoaderRoute: typeof PublicdemoDemoModalRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/storage': {
+      id: '/_public/(demo)/demo/storage'
+      path: '/demo/storage'
+      fullPath: '/demo/storage'
+      preLoaderRoute: typeof PublicdemoDemoStorageRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/themes': {
+      id: '/_public/(demo)/demo/themes'
+      path: '/demo/themes'
+      fullPath: '/demo/themes'
+      preLoaderRoute: typeof PublicdemoDemoThemesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/(demo)/demo/toasts': {
+      id: '/_public/(demo)/demo/toasts'
+      path: '/demo/toasts'
+      fullPath: '/demo/toasts'
+      preLoaderRoute: typeof PublicdemoDemoToastsRouteImport
+      parentRoute: typeof PublicRoute
     }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedUsersUserIdRoute: typeof AuthenticatedUsersUserIdRoute
+  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedUsersUserIdRoute: AuthenticatedUsersUserIdRoute,
+  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
+interface PublicRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicdemoAboutRoute: typeof PublicdemoAboutRoute
+  PublicdemoDemoFormRoute: typeof PublicdemoDemoFormRoute
+  PublicdemoDemoModalRoute: typeof PublicdemoDemoModalRoute
+  PublicdemoDemoStorageRoute: typeof PublicdemoDemoStorageRoute
+  PublicdemoDemoThemesRoute: typeof PublicdemoDemoThemesRoute
+  PublicdemoDemoToastsRoute: typeof PublicdemoDemoToastsRoute
+  PublicdemoDemoIndexRoute: typeof PublicdemoDemoIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicIndexRoute: PublicIndexRoute,
+  PublicdemoAboutRoute: PublicdemoAboutRoute,
+  PublicdemoDemoFormRoute: PublicdemoDemoFormRoute,
+  PublicdemoDemoModalRoute: PublicdemoDemoModalRoute,
+  PublicdemoDemoStorageRoute: PublicdemoDemoStorageRoute,
+  PublicdemoDemoThemesRoute: PublicdemoDemoThemesRoute,
+  PublicdemoDemoToastsRoute: PublicdemoDemoToastsRoute,
+  PublicdemoDemoIndexRoute: PublicdemoDemoIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  appauthSigninRoute: appauthSigninRoute,
-  appusersUsersUserIdRoute: appusersUsersUserIdRoute,
-  appusersUsersIndexRoute: appusersUsersIndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

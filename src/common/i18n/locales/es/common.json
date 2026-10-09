@@ -1,0 +1,67 @@
+{
+  "actions": {
+    "create": "Crear",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "view": "Ver",
+    "viewDetails": "Ver detalles",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "copy": "Copiar",
+    "retry": "Reintentar",
+    "sync": "Sincronizar"
+  },
+  "states": {
+    "creating": "Creando...",
+    "saving": "Guardando...",
+    "deleting": "Eliminando...",
+    "loading": "Cargando...",
+    "syncing": "Sincronizando...",
+    "active": "Activo",
+    "inactive": "Inactivo"
+  },
+  "table": {
+    "noData": "No hay datos",
+    "totalResults": "Total de resultados:",
+    "actionsColumn": "Acciones",
+    "pageSizeLabel": "Mostrar:",
+    "perPage": "por página",
+    "all": "Todos",
+    "filterPlaceholder": "Buscar...",
+    "clearFilters": "Limpiar filtros",
+    "clearFilter": "Limpiar filtro",
+    "dateFrom": "Desde",
+    "dateTo": "Hasta",
+    "activeFilters": "{{count}} filtro(s) activo(s)",
+    "sorting": "Ordenamiento",
+    "sortAsc": "Ascendente",
+    "sortDesc": "Descendente",
+    "clearSort": "Quitar orden",
+    "filterColumn": "Filtrar"
+  },
+  "fields": {
+    "name": "Nombre",
+    "description": "Descripción",
+    "email": "Correo",
+    "date": "Fecha",
+    "time": "Hora",
+    "status": "Estado"
+  },
+  "errors": {
+    "generic": "Ocurrió un error inesperado.",
+    "loadFailed": "No se pudieron cargar los datos.",
+    "createFailed": "No se pudo crear el registro.",
+    "deleteFailed": "No se pudo eliminar."
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "placeholder": {
+    "empty": "---"
+  }
+}

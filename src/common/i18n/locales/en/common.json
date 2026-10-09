@@ -1,0 +1,67 @@
+{
+  "actions": {
+    "create": "Create",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "close": "Close",
+    "view": "View",
+    "viewDetails": "View details",
+    "search": "Search",
+    "filter": "Filter",
+    "copy": "Copy",
+    "retry": "Retry",
+    "sync": "Sync"
+  },
+  "states": {
+    "creating": "Creating...",
+    "saving": "Saving...",
+    "deleting": "Deleting...",
+    "loading": "Loading...",
+    "syncing": "Syncing...",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "table": {
+    "noData": "No data",
+    "totalResults": "Total results:",
+    "actionsColumn": "Actions",
+    "pageSizeLabel": "Show:",
+    "perPage": "per page",
+    "all": "All",
+    "filterPlaceholder": "Search...",
+    "clearFilters": "Clear filters",
+    "clearFilter": "Clear filter",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "activeFilters": "{{count}} active filter(s)",
+    "sorting": "Sorting",
+    "sortAsc": "Ascending",
+    "sortDesc": "Descending",
+    "clearSort": "Clear sort",
+    "filterColumn": "Filter"
+  },
+  "fields": {
+    "name": "Name",
+    "description": "Description",
+    "email": "Email",
+    "date": "Date",
+    "time": "Time",
+    "status": "Status"
+  },
+  "errors": {
+    "generic": "An unexpected error occurred.",
+    "loadFailed": "Could not load the data.",
+    "createFailed": "Could not create the record.",
+    "deleteFailed": "Could not delete."
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "placeholder": {
+    "empty": "---"
+  }
+}

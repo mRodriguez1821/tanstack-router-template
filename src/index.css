@@ -8,8 +8,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: "Raleway Variable", sans-serif;
-  --font-sans: "Public Sans Variable", sans-serif;
+  --font-heading: var(--font-heading);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -41,6 +42,12 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -51,6 +58,47 @@
 }
 
 :root {
+  /* Tipografía y fuentes */
+  --font-sans: "Public Sans Variable", system-ui, -apple-system, sans-serif;
+  --font-heading: "Raleway Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Escala de tamaños de fuente dinámica */
+  --font-size-base: 16px;
+  --font-size-xs: calc(var(--font-size-base) * 0.75);     /* 12px con base 16px */
+  --font-size-sm: calc(var(--font-size-base) * 0.875);    /* 14px con base 16px */
+  --font-size-lg: calc(var(--font-size-base) * 1.125);    /* 18px con base 16px */
+  --font-size-xl: calc(var(--font-size-base) * 1.25);     /* 20px con base 16px */
+  --font-size-2xl: calc(var(--font-size-base) * 1.5);     /* 24px con base 16px */
+
+  /* Tamaños de íconos */
+  --icon-xs: 0.875rem;         /* 14px */
+  --icon-sm: 1rem;             /* 16px */
+  --icon-md: 1.25rem;          /* 20px */
+  --icon-lg: 1.5rem;           /* 24px */
+  --icon-xl: 2rem;             /* 32px */
+
+  /* Dimensiones y espaciados de botones */
+  --btn-height-sm: 2rem;       /* 32px */
+  --btn-height-md: 2.375rem;   /* 38px */
+  --btn-height-lg: 2.75rem;    /* 44px */
+  --btn-px-sm: 0.625rem;       /* 10px */
+  --btn-px-md: 0.875rem;       /* 14px */
+  --btn-px-lg: 1.25rem;        /* 20px */
+  --btn-gap-sm: 0.375rem;      /* 6px */
+  --btn-gap-md: 0.5rem;        /* 8px */
+  --btn-gap-lg: 0.625rem;      /* 10px */
+
+  /* Animaciones y microinteracciones de hover */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --btn-hover-transform: translateY(-2px);
+  --btn-active-transform: translateY(0) scale(0.98);
+  --btn-hover-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.12);
+  --card-hover-transform: translateY(-3px);
+  --card-hover-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.12);
+  --card-hover-border: var(--primary);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -86,6 +134,7 @@
 }
 
 .dark {
+  --card-hover-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.45);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -123,10 +172,12 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    font-size: var(--font-size-base, 16px);
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: var(--font-size-base, 16px);
   }
 }
